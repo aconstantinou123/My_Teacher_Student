@@ -14,7 +14,6 @@ public class Student {
     private String accessCode;
     private String teacherId;
 
-
     public ObjectId get_id() {
         return _id;
     }
