@@ -15,7 +15,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.context.annotation.Bean;
 
 import java.util.Arrays;
-import java.util.List;
+
 
 import static com.myteacher.Student.Security.SecurityConstants.*;
 
@@ -41,7 +41,11 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
                 .and()
                 .addFilter(new JWTAuthenticationFilter(authenticationManager()))
                 .addFilter(new JWTAuthorizationFilter(authenticationManager()))
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and()
+                .logout().deleteCookies("JSESSIONID")
+                .and()
+                .rememberMe().key(REMEMBER_ME_SECRET);
     }
 
     @Override
