@@ -14,13 +14,13 @@ public class StudentController {
     @Autowired
     StudentRepository studentRepository;
 
-    @PreAuthorize("hasAuthority('TEACHER')")
+    @PreAuthorize("hasRole('TEACHER')")
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public List<Student> getAllStudents() {
         return studentRepository.findAll();
     }
 
-    @PreAuthorize("hasAuthority('STUDENT')")
+    @PreAuthorize("hasRole('STUDENT')")
     @RequestMapping(value = "/{username}", method = RequestMethod.GET)
     public Student getStudentByUsername(@PathVariable("username") String username){
         return studentRepository.findByUsername(username);
