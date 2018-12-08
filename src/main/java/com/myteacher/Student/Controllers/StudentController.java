@@ -12,7 +12,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/")
-@CrossOrigin(origins="http://localhost:8080", allowedHeaders="*")
 public class StudentController {
     @Autowired
     StudentRepository studentRepository;
